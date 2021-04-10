@@ -25,19 +25,23 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginTest2() {
-        //wd.findElement(By.linkText("LOGIN")).click();
-        wd.findElement(By.cssSelector("[href='/login']"));
 
-        fillByLocator(By.cssSelector("[input[placeholder='Email']"), "nabinkra@gmail.com");
+        wd.findElement(By.cssSelector("[href='/login']")).click();
+
+        fillByLocator(By.cssSelector("input[placeholder='Email']"), "nabinkra@gmail.com");
         fillByLocator(By.cssSelector("[placeholder='Password']"), "1978Nadiia$");
 
+        /*wd.findElement(By.id("root"));
+        wd.findElement(By.cssSelector("#root"));
+        wd.findElement(By.cssSelector("[id='root']"));
+        wd.findElement(By.cssSelector("[id='root']"));
+        wd.findElement(By.cssSelector("div[id='root'][class='conteiner']"));*/
 
-
-        List<WebElement> buttons = wd.findElements(By.tagName("button"));
-        buttons.get(0).click();
+        wd.findElement(By.cssSelector("button:first-of-type")).click();
 
         String text = wd.findElement(By.tagName("button")).getText();
         Assert.assertEquals(text, "Sign Out");
+
 
     }
 

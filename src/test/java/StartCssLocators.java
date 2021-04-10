@@ -26,11 +26,12 @@ public class StartCssLocators extends TestBase {
         wd.findElement(By.cssSelector(".container"));
         wd.findElement(By.cssSelector("div#root.container"));
 
-        //By name
+        //By name [atribute = 'value']
         //  wd.findElement(By.name("user"));
         // wd.findElement(By.cssSelector("[name='user']"));
         wd.findElement(By.cssSelector("[placeholder='Email']"));
 
     }
+}
 
 

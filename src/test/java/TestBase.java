@@ -16,7 +16,7 @@ public class TestBase {
     public void init() {
         wd = new ChromeDriver();
         wd.manage().window().maximize();
-        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
         wd.navigate().to("https://contacts-app.tobbymarshall815.vercel.app/");
 
 
@@ -24,7 +24,8 @@ public class TestBase {
 
     @AfterSuite
     public void tearDown() {
-        wd.quit();
+
+        //wd.quit();
     }
 
     public void fillByElement(WebElement element, String text) {
@@ -56,15 +57,17 @@ public class TestBase {
         return wd.findElements(locator).size() > 0;
     }
 
-    public void login(String email, String password){
-        wd.findElement(By.cssSelector("[href='/login']"));
-        fillByLocator(By.cssSelector("[input[placeholder='Email']"), email);
-        fillByLocator(By.cssSelector("[placeholder='Password']"), password)
+    public void login(String email, String password) {
+        wd.findElement(By.cssSelector("[href='/login']")).click();
+        fillByLocator(By.cssSelector("input[placeholder='Email']"), email);
+        fillByLocator(By.cssSelector("[placeholder='Password']"), password);
         wd.findElement(By.cssSelector("button:first-of-type")).click();
+    }
+
 
 
 //        fillByLocator(By.cssSelector("[input[placeholder='Email']"), "nabinkra@gmail.com");
 //        fillByLocator(By.cssSelector("[placeholder='Password']"), "1978Nadiia$");
-    }
-
 }
+
+
