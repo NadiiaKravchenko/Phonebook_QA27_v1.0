@@ -17,8 +17,8 @@ public class AddContactTest extends TestBase {
     public void addContact() {
         int index = (int) ((System.currentTimeMillis() / 1000) % 3600);
         wd.findElement(By.cssSelector("[href='/add']")).click();
-        fillByLocator(By.cssSelector("[placeholder='Name']"), "Lola" + index);
-        fillByLocator(By.cssSelector("[placeholder='Last Name']"), "Now" + index);
+        fillByLocator(By.cssSelector("[placeholder='Name']"), "Dolly" + index);
+        fillByLocator(By.cssSelector("[placeholder='Last Name']"), "Bin" + index);
         fillByLocator(By.cssSelector("[placeholder='Phone']"), "9876" + index);
         fillByLocator(By.cssSelector("[placeholder='email']"), "Lola" + index + "@mail.ru");
         fillByLocator(By.cssSelector("[placeholder='Address']"), "Haifa/" + index);
