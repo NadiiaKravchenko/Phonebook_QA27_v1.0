@@ -4,6 +4,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class RemoveContact extends TestBase {
 
     @BeforeMethod
@@ -28,23 +30,55 @@ public class RemoveContact extends TestBase {
 
     @Test
     public void removeAllContact() {
-        do {
-            wd.findElement(By.cssSelector("[href='/contacts']")).click();
-            if (isElement(By.cssSelector(".contact-item_card__2SOIM"))) {
-                WebElement contact = wd.findElement(By.cssSelector(".contact-item_card__2SOIM"));
-                contact.click();
-            }
+        wd.findElement(By.cssSelector("[href='/contacts']")).click();
+        List<WebElement> contacts = wd.findElements(By.cssSelector(".contact-item_card__2SOIM"));
+//        System.out.println(contacts.size());
+//        for(WebElement el:contacts){
+//            el.click();
+//            WebElement removeBtn = wd.findElement(By.cssSelector(".contact-item-detailed_card__50dTS button:last-of-type"));}
+
+
+        int size = contacts.size();
+        for (int i = 0; i < size; i++) {
+            WebElement contact = wd.findElement(By.cssSelector(".contact-item_card__2SOIM"));
+            contact.click();
             pause(1500);
             WebElement removeBtn = wd.findElement(By.cssSelector(".contact-item-detailed_card__50dTS button:last-of-type"));
             removeBtn.click();
-            pause(1500);
+            pause(500);
+
         }
+    }
 
-        while (isElement(By.cssSelector("contact-page_message__2qafk")));
 
+//        do {
+//            wd.findElement(By.cssSelector("[href='/contacts']")).click();
+//            if (isElement(By.cssSelector(".contact-item_card__2SOIM"))) {
+//                WebElement contact = wd.findElement(By.cssSelector(".contact-item_card__2SOIM"));
+//                contact.click();
+//            }
+//            pause(1500);
+//            WebElement removeBtn = wd.findElement(By.cssSelector(".contact-item-detailed_card__50dTS button:last-of-type"));
+//            removeBtn.click();
+//            pause(1500);
+//        }
+//
+//        while (isElement(By.cssSelector("contact-page_message__2qafk")));
+
+
+    @Test
+    public void removeAllContacts() {
+        wd.findElement(By.cssSelector("[href='/contacts']")).click();
+        while (wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size() != 0) {
+            wd.findElement(By.cssSelector(".contact-item_card__2SOIM")).click();
+            pause(2500);
+            wd.findElement(By.xpath("//button[.='Remove']")).click();
+            pause(2500);
+        }
 
 
     }
+
 
     @AfterMethod
     public void postconditions() {
