@@ -71,9 +71,9 @@ public class RemoveContact extends TestBase {
         wd.findElement(By.cssSelector("[href='/contacts']")).click();
         while (wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size() != 0) {
             wd.findElement(By.cssSelector(".contact-item_card__2SOIM")).click();
-            pause(2500);
+            pause(500);
             wd.findElement(By.xpath("//button[.='Remove']")).click();
-            pause(2500);
+            pause(500);
         }
 
 
